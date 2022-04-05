@@ -42,6 +42,7 @@ Mern-stack. React for the frontend, nodejs and express for the backend and mongo
 ## 4. Schedule and workload estimate
 
 	Using Trello for tracking sprints and overall schedule.
+	https://trello.com/b/PlLJs19N/movies-backlog-app
 
 
 ## 5. Requirements
