@@ -5,7 +5,7 @@ Tommi Nikkinen
 ## Contents
 
 ### 1 Overview	
-### 2 User interface and functions	
+### 2 How to use	
 #### 2.1 Login page	
 #### 2.2 Dashboard	
 #### 2.3	
