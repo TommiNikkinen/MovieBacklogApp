@@ -10,11 +10,21 @@ const getMovies = asyncHandler(async (req, res) => {
   res.status(200).json(movies);
 });
 
+// @desc    Get a movie data
+// @route   GET /api/movies/:id
+// @access  Private
+
+const getMovie = asyncHandler(async (req, res) => {
+  const movie = await Movie.findById(req.params.id);
+  res.status(200).json(movie);
+});
+
 // @desc    Add a movie
 // @route   POST /api/movies
 // @access  Private
 const setMovie = asyncHandler(async (req, res) => {
   if (!req.body.name) {
+    res.status(400);
     throw new Error("Please add a name");
   }
   const movie = await Movie.create({
@@ -22,7 +32,7 @@ const setMovie = asyncHandler(async (req, res) => {
     status: false,
     user: req.user.id,
   });
-  res.status(200).json({ movie });
+  res.status(200).json(movie);
 });
 
 // @desc    Edit a movie
@@ -36,15 +46,13 @@ const updateMovie = asyncHandler(async (req, res) => {
     throw new Error("Movie not found");
   }
 
-  const user = await User.findById(req.user.id);
-
   //Check for user
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error("User not found");
   }
   //Make sure the logged in user matches the movie user
-  if (movie.user.toString() !== user.id) {
+  if (movie.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
@@ -74,14 +82,13 @@ const deleteMovie = asyncHandler(async (req, res) => {
     throw new Error("Movie not found");
   }
 
-  const user = await User.findById(req.user.id);
   //Check for user
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error("User not found");
   }
   //Make sure the logged in user matches the movie user
-  if (movie.user.toString() !== user.id) {
+  if (movie.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
@@ -92,6 +99,7 @@ const deleteMovie = asyncHandler(async (req, res) => {
 });
 
 module.exports = {
+  getMovie,
   getMovies,
   setMovie,
   updateMovie,
