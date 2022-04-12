@@ -11,7 +11,7 @@ const { protect } = require("../middleware/authMiddleware");
 
 router.route("/").get(protect, getMovies).post(protect, setMovie);
 router
-  .route("/:id")
+  .route("/:id/")
   .get(protect, getMovie)
   .put(protect, updateMovie)
   .delete(protect, deleteMovie);

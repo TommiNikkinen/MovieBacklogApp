@@ -5,11 +5,13 @@ const API_URL = "api/movies/";
 
 //Add a new movie
 const createMovie = async (movieData, token) => {
+  console.log("post", token);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
+  console.log(config);
   const response = await axios.post(API_URL, movieData, config);
 
   return response.data;
@@ -47,7 +49,13 @@ const putMovie = async (movieData, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.put(API_URL + movieData._id, config);
+  const response = await axios.put(
+    API_URL + movieData._id,
+    {
+      ...movieData,
+    },
+    config
+  );
 
   return response.data;
 };

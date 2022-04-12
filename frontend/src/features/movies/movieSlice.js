@@ -71,6 +71,7 @@ export const editMovie = createAsyncThunk(
   "movies/edit",
   async (movieData, thunkAPI) => {
     try {
+      console.log("edead", movieData);
       const token = thunkAPI.getState().auth.user.token;
       return await movieService.putMovie(movieData, token);
     } catch (error) {
@@ -158,6 +159,7 @@ export const movieSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.movies = action.payload;
+        console.log(action.payload);
       })
       .addCase(editMovie.rejected, (state, action) => {
         state.isLoading = false;

@@ -40,7 +40,7 @@ const setMovie = asyncHandler(async (req, res) => {
 // @access  Private
 const updateMovie = asyncHandler(async (req, res) => {
   const movie = await Movie.findById(req.params.id);
-
+  console.log(movie);
   if (!movie) {
     res.status(400);
     throw new Error("Movie not found");
