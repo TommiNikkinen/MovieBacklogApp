@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editMovie, getMovie, reset } from "../features/movies/movieSlice";
 import { FaStar, FaRegCommentAlt } from "react-icons/fa";
@@ -10,11 +10,10 @@ function Movie() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log();
   const { user } = useSelector((state) => state.auth);
   const { isLoading, isError, message } = useSelector((state) => state.movies);
 
-  const ratings = [1, 2, 3, 4, 5];
+  const ratingValues = [1, 2, 3, 4, 5];
   const [comments, setComments] = useState(location.state.movie.comments);
   const [rating, setRating] = useState(location.state.movie.rating);
   const [status, setStatus] = useState(location.state.movie.status);
@@ -36,6 +35,7 @@ function Movie() {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(editMovie(movieData));
+    navigate("/");
   };
 
   const checkState = () => {
@@ -59,7 +59,6 @@ function Movie() {
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="comments">
-              {" "}
               Comments
               <FaRegCommentAlt />
             </label>
@@ -75,13 +74,14 @@ function Movie() {
             <div className="form-rating">
               Rating <FaStar />
               <div className="form-star">
-                {ratings.map((rate) => (
+                {ratingValues.map((rate) => (
                   <span key={rate}>
                     <label htmlFor={rate + " rating"}>{rate}</label>
                     <input
                       value={rate}
                       type="radio"
                       name="rating"
+                      defaultChecked={true ? rate === rating : false}
                       onChange={(e) => setRating(e.target.value)}
                     />
                   </span>
@@ -89,16 +89,20 @@ function Movie() {
               </div>
             </div>
             <div className="form-status">
-              <p>Watched yes/no</p>
-              <input
-                type="checkbox"
-                className="form-control"
-                id="status"
-                name="status"
-                checked={status && "checked"}
-                value={status}
-                onChange={() => setStatus(!status)}
-              />
+              <p>Watched</p>
+              <label className="toggle">
+                <input
+                  type="checkbox"
+                  className="form-control"
+                  id="status"
+                  name="status"
+                  checked={status && "checked"}
+                  value={status}
+                  onChange={() => setStatus(!status)}
+                />
+                <span className="slider"></span>
+                <span className="labels" data-on="YES" data-off="NO"></span>
+              </label>
             </div>
           </div>
           <div className="form-group">

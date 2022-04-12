@@ -53,13 +53,14 @@ function Login() {
 
   return (
     <>
+      <div className="hero-image"></div>
       <section className="heading">
         <h1>
           <FaSignInAlt />
           Login
         </h1>
-        <p>Login and start adding movies</p>
       </section>
+
       <section className="form">
         <form onSubmit={onSubmit}>
           <div className="form-group">

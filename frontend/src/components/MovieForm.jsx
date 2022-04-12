@@ -16,7 +16,7 @@ function MovieForm() {
     <section className="form">
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Movie</label>
+          <label htmlFor="name">Add a new movie</label>
           <input
             type="text"
             name="name"

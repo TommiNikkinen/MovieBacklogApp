@@ -35,13 +35,11 @@ function Dashboard() {
   }
   return (
     <>
-      <section className="heading">
-        <h1>Welcome {user && user.name}</h1>
-        <p>My watchlist</p>
-      </section>
+      <div className="hero-image"></div>
+      <section className="heading"></section>
 
       <MovieForm />
-
+      <h1 className="watchlist-heading"> {user && user.name}'s Watchlist</h1>
       <section className="content">
         {movies.length > 0 ? (
           <div className="movies">
