@@ -1,4 +1,5 @@
 # Movie Backlog App
+Online versio : http://flickstickapp.herokuapp.com/login
 Tommi Nikkinen
 5.4.2022
 
