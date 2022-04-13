@@ -31,10 +31,10 @@ export const createMovie = createAsyncThunk(
 //Get user movies
 export const getMovies = createAsyncThunk(
   "movies/getAll",
-  async (_, thunkAPI) => {
+  async (query, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await movieService.getMovies(token);
+      return await movieService.getMovies(query, token);
     } catch (error) {
       const message =
         (error.response &&

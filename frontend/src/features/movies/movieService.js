@@ -18,13 +18,16 @@ const createMovie = async (movieData, token) => {
 };
 
 //Get user movies
-const getMovies = async (token) => {
+const getMovies = async (query, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.get(API_URL, config);
+  if (query !== "") {
+    query = "?" + query;
+  }
+  const response = await axios.get(API_URL + query, config);
 
   return response.data;
 };

@@ -16,18 +16,18 @@ function MovieForm() {
     <section className="form">
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Add a new movie</label>
           <input
             type="text"
             name="name"
             id="name"
+            placeholder="Add a new movie"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="form-group">
           <button className="btn btn-block" type="submit">
-            Add a movie
+            Submit
           </button>
         </div>
       </form>

@@ -1,4 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Oswald:400|Open+Sans:700);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
 
 * {
   margin: 0;
@@ -43,13 +50,18 @@ h3 {
   text-align: center;
 }
 
+
+
 .header {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  margin-bottom: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 60px;
+  padding: 20px 20px 10px;
+  border-bottom: 2px solid lightgray;
   
 }
 
@@ -80,22 +92,85 @@ h3 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 25px;
-  margin-top: 25px;
-  padding: 0 20px;
+  margin-top: 15px;
+  border-bottom: 2px solid lightgray
 }
 
 .heading p {
   color: #828282;
 }
-
-.hero-image {
-  background-image: url('D:\Ohjelmointi\MovieBacklogApp\frontend\public\heroCover.jpg');
-  height: 267px;
+.hero{
+  margin-top: 10px;
+  height: 290px;
+  width: auto;
   background-position:center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative
+  position: relative;
 }
+
+.hero-image {
+  background: url("D:\Ohjelmointi\MovieBacklogApp\frontend\public\heroCover.jpg");
+  height: 290px;
+  filter: blur(4px);
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-text{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 30%;
+  margin-top: -55px;
+}
+.hero-text h1, h3{
+  transform: matrix(1, -0.20, 0, 1, 0, 0);
+  -ms-transform: matrix(1, -0.20, 0, 1, 0, 0);
+  -webkit-transform: matrix(1, -0.20, 0, 1, 0, 0);
+}
+
+.hero-text h1{
+  color:rgb(238, 221, 188);
+  font-family: "Oswald", Sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 70px;
+  text-shadow: 4px 5px #030303, 6px 7px #751700;
+}
+.hero-text h1 span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hero-text  span.star {
+  font-size: 30px;
+}
+
+.hero-text h3 {
+  color:rgb(238, 221, 188);
+  font-family: "Open Sans", Sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;  
+  position: relative;
+  text-shadow: 4px 5px #030303, 6px 7px #751700;
+  
+}
+
+
+
+.hero-text  h3:before {
+  margin: 5px 0 0 -110px;
+}
+
+.hero-text  h3:after {
+  margin: 5px 0 0 10px;
+}
+
 
 
 .movies {
@@ -144,7 +219,7 @@ text-decoration: underline;
 .form-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #000000;
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: inherit;
@@ -224,6 +299,41 @@ text-decoration: underline;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
+.search {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.search input{
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+.search select{
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  text-align: left;
+}
+.searchButton{
+  margin-left: 2px;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+.searchButton:hover{
+  transform: scale(0.98);
+}
+
 
 /* styling lable */
 .toggle {
@@ -315,9 +425,9 @@ text-decoration: underline;
 }
 .watchlist-heading{
   border-bottom: solid 1px black;
-  border-top: solid 1px black;
   width: 70%;
   margin: auto;
+  margin-bottom: 10px;
 }
 
 @keyframes spin {
@@ -341,14 +451,94 @@ text-decoration: underline;
   .heading p {
     font-size: 1.5rem;
   }
+  .content {
+    width: 100%;
+  
+  }
   .movie-info{
     grid-template-columns: repeat(1, 1fr);
   }
-  .hero-image{
-    background-image: none;
-    height: 0;
-  }
+  
   .form-bottom{
     grid-template-columns: repeat(1, 1fr);
+  }
+  .form{
+    width: 100%;
+  }
+  .search{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .search div{
+    padding-top: 5px;
+  }
+  .watchlist-heading{
+    width: 100%;
+  }
+  
+  @media (max-width: 440px){
+    .hero{
+      height: 200px;
+    }
+    .hero-image {
+      height: 200px;
+      filter: blur(4px);
+    }
+    
+    .hero-text{
+      margin-top:-20px;
+    }
+    
+    .hero-text h1{
+      color:rgb(238, 221, 188);
+      font-weight: 400;
+      font-size: 35px;
+      text-shadow: 4px 5px #030303, 6px 7px #751700;
+    }
+    .hero-text h1 span {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    
+    .hero-text  span.star {
+      font-size: 20px;
+    }
+    
+    .hero-text h3 {
+      color:rgb(238, 221, 188);
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;  
+      position: relative;
+      text-shadow: 4px 5px #030303, 6px 7px #751700;
+      
+    }
+    .movie .movie-link{
+      font-size: 14px;
+    }
+    .movie .movie-info{
+      font-size: 14px;
+    }
+    .search{
+      font-size: 14px;
+      padding: 10px;
+    }
+    .search input{
+      width: 100%;
+    }
+    
+    .search div{
+      padding-top: 5px;
+    }
+    .searchButton{
+      width: 100%;
+      margin-top: 5px;
+    }
+    .watchlist-heading{
+      font-size: 24px;
+    }
+    
   }
 }

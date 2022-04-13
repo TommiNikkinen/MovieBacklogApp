@@ -53,7 +53,6 @@ function Login() {
 
   return (
     <>
-      <div className="hero-image"></div>
       <section className="heading">
         <h1>
           <FaSignInAlt />

@@ -6,8 +6,34 @@ const User = require("../models/userModel");
 // @route   GET /api/movies
 // @access  Private
 const getMovies = asyncHandler(async (req, res) => {
-  const movies = await Movie.find({ user: req.user.id });
-  res.status(200).json(movies);
+  let query = "";
+
+  if (
+    req.query.sort === "status" ||
+    req.query.sort === "-status" ||
+    req.query.sort === "name" ||
+    req.query.sort === "createdAt" ||
+    req.query.sort === "updatedAt" ||
+    req.query.sort === "rating"
+  ) {
+    query = req.query.sort;
+    const movies = await Movie.find({ user: req.user.id }).sort(query);
+    res.status(200).json(movies);
+    return;
+  }
+  if (req.query.search) {
+    query = req.query.search;
+    console.log(query);
+    const movies = await Movie.find({
+      user: req.user.id,
+      name: { $regex: query, $options: "i" },
+    });
+    res.status(200).json(movies);
+    return;
+  } else {
+    const movies = await Movie.find({ user: req.user.id }).sort(query);
+    res.status(200).json(movies);
+  }
 });
 
 // @desc    Get a movie data

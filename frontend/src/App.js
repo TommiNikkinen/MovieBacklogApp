@@ -12,6 +12,7 @@ function App() {
       <Router>
         <div className="container">
           <Header />
+
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/:id" element={<Movie />} />
