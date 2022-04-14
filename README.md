@@ -1,14 +1,16 @@
 # Movie Backlog App
-### Live demo : http://flickstickapp.herokuapp.com/login
+Tommi Nikkinen
+5.4.2022
 ----
-Test user login:
+### Live demo : http://flickstickapp.herokuapp.com/login
+
+Test user login information:
 email: test@test.com
 test: test1234
 
 ----
 
-Tommi Nikkinen
-5.4.2022
+
 
 ## Contents
 
