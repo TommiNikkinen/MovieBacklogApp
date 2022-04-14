@@ -1,6 +1,6 @@
 # Movie Backlog App
 
-###Tommi Nikkinen 5.4.2022
+Tommi Nikkinen 5.4.2022
 
 ----
 ### Live demo : http://flickstickapp.herokuapp.com/login
