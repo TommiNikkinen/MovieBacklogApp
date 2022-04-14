@@ -1,4 +1,4 @@
-# Movie Backlog App
+# FlickStick / Movie Backlog App
 
 Tommi Nikkinen 5.4.2022
 
